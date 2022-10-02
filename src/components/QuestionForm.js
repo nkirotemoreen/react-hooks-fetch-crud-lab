@@ -16,10 +16,26 @@ function QuestionForm(props) {
       [event.target.name]: event.target.value,
     });
   }
-
+  // form to push data to the API on submission
+  let url = "http://localhost:4000/questions"
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formData);
+    //console.log(formData);
+    // use fetch and post method to post data to the server
+
+    fetch(url,
+      {
+        method: 'POST',
+        headers:{
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      
+      }
+      )
+      //console.log(JSON.stringify(formData));
+    
+   
   }
 
   return (
